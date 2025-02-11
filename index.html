@@ -4,54 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hi!</title>
-</head>
-<body style="background-color: rosybrown; text-align: center; overflow: hidden;">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
+        body {
+            height: 100vh;
+            background-color: rosybrown;
+            overflow: hidden;
+            text-align: center;
+            margin: 0;
+        }
+
+        div {
+            margin: 2rem 0;
+        }
+
+        h1 {
+            color: darkred;
+            font-size: 3rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+
+        button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .btn-container {
+            margin-bottom: 20px;
+        }
+
+        .yes {
+            background-color: green;
+            color: white;
+            border-radius: 10px;
+            position: absolute;
+            left: 45vw;
+        }
+
+        .no {
+            background-color: red;
+            color: white;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 9999;
+        }
+
+        .img-container {
+            position: absolute;
+            left: 35vw;
+            margin-top: 20vh;
+        }
+
+        img {
+            width: 30vw;
+            height: 45vh;
+        }
+
+    </style>
+</head>
+<body>
     <div>
-        <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: darkred;">
-            Will you be my Valentine ?
-        </h1>
+        <h1>Will you be my Valentine?</h1>
     </div>
-    <div>
-        <button id="yes-button" onclick="yesButton()" style="background-color: green; padding: 10px 20px; margin: 10px 2rem; border: none; border-radius: 10px; color: white;">
-            Yes
-        </button>
-        <button id="no-button" onclick="noButton()" style="background-color: red; padding: 10px 20px; margin: 10px 2rem; border: none; border-radius: 10px; color: white;">
-            No
-        </button>
+    <div class="btn-container">
+        <button class="yes" onclick="window.location.href = 'yes-page.html'">Yes</button>
+        <button class="no" onclick="window.location.href = 'no-page.html'">No</button>
     </div>
-    <div>
-        <img src="kya-cat.gif" alt="Kyaahhhh">
+    <div class="img-container">
+        <img src="kya-cat.gif" alt="Ayiee">
     </div>
 
     <script type="text/javascript">
-        const messages = [
-            'Are you sure?',
-            'Really sure??',
-            'Are you positive?',
-            'Cutie please...',
-            'Just think about it!',
-            'If you say no, I will be really sad...',
-            'I will be very sad...',
-            'I will be very very very sad...',
-            "I'm so sad, I will cry now..."
-        ];
-
-        let messageIndex = 0;
-
-        function noButton() {
-            const noButton = document.querySelector('#no-button');
-            const yesButton = document.querySelector('#yes-button');
-            noButton.textContent = messages[messageIndex];
-            messageIndex = (messageIndex + 1) % messages.length;
-            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-
-            yesButton.style.fontSize = `${currentSize * 1.5}px`;
-        }
-
-        function yesButton() {
-            window.location.href = "yes-page.html"
-        }
+        const button = document.querySelector('.no');
+        button.addEventListener('mouseover', function () {
+            button.style.left = `${Math.ceil(Math.random() * 90)}%`;
+            button.style.top = `${Math.ceil(Math.random() * 90)}%`;
+        });
     </script>
 </body>
 </html>
